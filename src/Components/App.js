@@ -7,19 +7,26 @@ export default class App extends Component {
   constructor(){
     super()
     this.state={
-      kick: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
-      snare: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
-      hiHat: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
-      ride: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
       step: 0,
+      drumRacks: {
+        kick: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
+        snare: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
+        hiHat: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
+        ride: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
+      },
     }
   }
 
   render() {
+
+    const Children = React.cloneElement(this.props.children, {
+      step: this.state.step,
+      drumRacks: this.state.drumRacks,
+    })
     return (
       <div className="App">
         <div>audio player</div>
-        {this.props.children}
+        {Children}
       </div>
     );
   }

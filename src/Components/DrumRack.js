@@ -1,10 +1,10 @@
 import React from 'react';
 
-const DrumRack = ()=>{
+const DrumRack = (props) => {
   return(
     <div>
-      <div id="name">Kick</div>
-      
+      <div id="name">{props.name}</div>
+
 
     </div>
   )
