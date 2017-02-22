@@ -2,7 +2,11 @@ import React from 'react';
 
 const DrumRack = ()=>{
   return(
-    <div>DRUMRACK</div>
+    <div>
+      <div id="name">Kick</div>
+      
+
+    </div>
   )
 }
 
