@@ -5,7 +5,7 @@ import Instructions from './Components/Instructions';
 import DrumMachine from './Components/DrumMachine';
 import Visualizer from './Components/Visualizer';
 import './index.css';
-import { Router, browserHistory, Route, IndexRoute, IndexRedirect } from 'react-router';
+import { Router, browserHistory, Route, IndexRedirect } from 'react-router';
 
 const router = (
   <Router history={browserHistory}>

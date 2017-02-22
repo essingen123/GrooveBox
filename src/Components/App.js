@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import Instructions from './Instructions';
-import DrumMachine from './DrumMachine';
-import Visualizer from './Visualizer';
+
 
 export default class App extends Component {
   constructor(){
@@ -9,7 +7,7 @@ export default class App extends Component {
     this.state={
       step: 0,
       drumRacks: {
-        kick: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
+        kick: [true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
         snare: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
         hiHat: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
         ride: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],

@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 const DrumMachine = (props) => {
   return(
     <div id='drum-machine-container'>
+
       <div id='play-controls'>
         <div>play</div>
         <div>stop</div>
