@@ -23,7 +23,7 @@ export default class App extends Component {
     })
     return (
       <div className="App">
-        <div>audio player</div>
+        <div className="audio-player">audio player</div>
         {Children}
       </div>
     );

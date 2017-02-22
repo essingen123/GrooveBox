@@ -2,8 +2,8 @@ import React from 'react';
 
 const DrumStep = (props) => {
   return(
-    <div>
-      <div className={props.step ? 'on' : 'off'}>test</div>
+    <div className="step">
+      <div className={props.step ? 'step-on' : 'step-off'}>test</div>
     </div>
   )
 }

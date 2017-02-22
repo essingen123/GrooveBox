@@ -3,3 +3,53 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+/*App Component*/
+.audio-player {
+  display: none;
+}
+
+/*Drum Machine Component*/
+#drum-machine-container {
+  border: 1px solid black;
+  diplay: flex;
+  flex-direction: column;
+  width: 90vw;
+  height: 90vh;
+  margin: auto;
+}
+
+#play-controls {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+}
+
+#drum-racks {
+  display: flex;
+  flex-direction: column;
+}
+
+.single-rack{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 40px 20px;
+}
+
+.sample-name {
+  width: 50px;
+  margin: 0 20px;
+  text-align: right;
+}
+
+.step {
+}
+
+.step-on {
+  background-color: red;
+}
+
+.step-off {
+  background-color: blue;
+}
