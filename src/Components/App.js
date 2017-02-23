@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import ReactHowler from 'react-howler';
+import howler from 'howler';
 
 export default class App extends Component {
   constructor(){
@@ -8,13 +9,24 @@ export default class App extends Component {
       playMusic: false,
       currentStep: 0,
       drumRacks: {
-        kick: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
-        snare: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
-        hiHat: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
-        ride: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
+        Kick: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
+        Clap: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
+        HiHat: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
+        Bass: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
+      },
+      sounds: {
+        Kick: new howler.Howl({src: ['Sounds/Kick.mp3']}),
+        HiHat: new howler.Howl({src: ['Sounds/HiHat.mp3']}),
+        Clap: new howler.Howl({src: ['Sounds/Clap.mp3']}),
+        Bass: new howler.Howl({src: ['Sounds/Bass.mp3']})
       },
     }
   }
+
+  componentDidMount() {
+    this.playLoop()
+  }
+
 
   toggleStep(key, index) {
     let newRack = this.state.drumRacks
@@ -29,8 +41,9 @@ export default class App extends Component {
   playStep() {
     if (this.state.playMusic){
       Object.keys(this.state.drumRacks).forEach((key)=>{
-        //play sounds here
-       console.log(this.state.drumRacks[key][this.state.currentStep])
+        if(this.state.drumRacks[key][this.state.currentStep]){
+          this.state.sounds[key].play()
+        }
       })
       if (this.state.currentStep < 15){
         this.setState({currentStep: this.state.currentStep + 1})
@@ -49,13 +62,12 @@ export default class App extends Component {
     const Children = React.cloneElement(this.props.children, {
       toggleStep: this.toggleStep.bind(this),
       playPause: this.playPause.bind(this),
-      currentStep: this.state.step,
+      currentStep: this.state.currentStep,
       drumRacks: this.state.drumRacks,
     })
 
     return (
       <div className="App">
-        <div className="audio-player" onClick={()=>this.playLoop()}>audio player</div>
         {Children}
       </div>
     );
