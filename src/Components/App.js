@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import ReactHowler from 'react-howler';
+import howler from 'howler';
 
 export default class App extends Component {
   constructor(){
@@ -8,10 +9,10 @@ export default class App extends Component {
       playMusic: false,
       currentStep: 0,
       drumRacks: {
-        kick: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
-        snare: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
-        hiHat: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
-        ride: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
+        Kick: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
+        Clap: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
+        HiHat: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
+        Bass: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
       },
     }
   }
@@ -27,10 +28,31 @@ export default class App extends Component {
   }
 
   playStep() {
+    const Bass = new howler.Howl({src: ['Sounds/Bass.mp3']});
+    const Clap = new howler.Howl({src: ['Sounds/Clap.mp3']});
+    const HiHat = new howler.Howl({src: ['Sounds/HiHat.mp3']});
+    const Kick = new howler.Howl({src: ['Sounds/Kick.mp3']});
+
     if (this.state.playMusic){
       Object.keys(this.state.drumRacks).forEach((key)=>{
-        //play sounds here
-       console.log(this.state.drumRacks[key][this.state.currentStep])
+      if(this.state.drumRacks[key][this.state.currentStep]){
+        switch (key) {
+          case 'Bass':
+            Bass.play();
+            break;
+          case 'Clap':
+            Clap.play();
+            break;
+          case 'HiHat':
+            HiHat.play();
+            break;
+          case 'Kick':
+            Kick.play();
+            break;
+          default:
+            console.log(key)
+        }
+      }
       })
       if (this.state.currentStep < 15){
         this.setState({currentStep: this.state.currentStep + 1})
