@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactHowler from 'react-howler';
 import howler from 'howler';
 
 export default class App extends Component {
@@ -58,7 +57,6 @@ export default class App extends Component {
   }
 
   render() {
-
     const Children = React.cloneElement(this.props.children, {
       toggleStep: this.toggleStep.bind(this),
       playPause: this.playPause.bind(this),
