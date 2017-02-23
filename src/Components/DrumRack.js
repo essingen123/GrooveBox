@@ -11,6 +11,7 @@ const DrumRack = (props) => {
           rackKey={props.name}
           step={step}
           toggleStep={props.toggleStep}
+          currentStep={props.currentStep}
         />
       )}
     </div>

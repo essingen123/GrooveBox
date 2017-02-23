@@ -7,7 +7,7 @@ const DrumMachine = (props) => {
     <div id='drum-machine-container'>
 
       <div id='play-controls'>
-        <h1 id="drum-logo">vaporgrooves</h1>
+        <h1 id="drum-logo">VaporGrooves</h1>
         <button id='play-button' onClick={()=>props.playPause()} >
           play/pause
         </button>
@@ -25,7 +25,12 @@ const DrumMachine = (props) => {
 
       <div id='drum-racks'>
         {Object.keys(props.drumRacks).map((drumRack, i) =>
-          <DrumRack key={i} name={drumRack} steps={props.drumRacks[drumRack]} toggleStep={props.toggleStep}/>
+          <DrumRack key={i}
+                    name={drumRack}
+                    steps={props.drumRacks[drumRack]}
+                    toggleStep={props.toggleStep}
+                    currentStep={props.currentStep}
+          />
         )}
       </div>
 

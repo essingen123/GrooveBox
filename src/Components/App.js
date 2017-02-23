@@ -49,7 +49,7 @@ export default class App extends Component {
     const Children = React.cloneElement(this.props.children, {
       toggleStep: this.toggleStep.bind(this),
       playPause: this.playPause.bind(this),
-      currentStep: this.state.step,
+      currentStep: this.state.currentStep,
       drumRacks: this.state.drumRacks,
     })
 
