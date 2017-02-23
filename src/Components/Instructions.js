@@ -11,8 +11,11 @@ const Instructions = ()=> {
         <li>enjoy the wavy visuals, and change the rhythm by muting drum tracks with keys 1-4</li>
         <li>pro-tip, the home row of your keyboard becomes a playable keyboard in the visualizer!</li>
         <Link to={'/drummachine'}>
-          <button id="link-to-drums">gimme the beat</button>
+          <button id="link-to-drums">
+            gimme the beat
+          </button>
         </Link>
+        <p>built with React, howlerJS, p5js, and a little bit of nostalgia</p>
       </div>
     )
 }

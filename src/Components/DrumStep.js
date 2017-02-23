@@ -5,7 +5,7 @@ const DrumStep = (props) => {
     <div className="step"
          onClick={()=> props.toggleStep(props.rackKey, props.index)}
     >
-      <div className={props.step ? 'step-on' : 'step-off'}>test</div>
+      <div className={props.step ? 'step-on' : 'step-off'}></div>
     </div>
   )
 }
