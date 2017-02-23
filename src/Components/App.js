@@ -23,6 +23,11 @@ export default class App extends Component {
     }
   }
 
+  componentDidMount() {
+    this.playLoop()
+  }
+
+
   toggleStep(key, index) {
     let newRack = this.state.drumRacks
     newRack[key][index] = !newRack[key][index]
@@ -63,7 +68,6 @@ export default class App extends Component {
 
     return (
       <div className="App">
-        <div className="audio-player" onClick={()=>this.playLoop()}>audio player</div>
         {Children}
       </div>
     );

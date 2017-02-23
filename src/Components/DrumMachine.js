@@ -3,12 +3,13 @@ import DrumRack from './DrumRack'
 import { Link } from 'react-router';
 
 const DrumMachine = (props) => {
+
   return(
-    <div id='drum-machine-container'>
+    <div id='drum-machine-container' onKeyPress={console.log('pizza')}>
 
       <div id='play-controls'>
         <h1 id="drum-logo">VaporGrooves</h1>
-        <button id='play-button' onClick={()=>props.playPause()} >
+        <button id='play-button' autoFocus onClick={()=>props.playPause()} >
           play/pause
         </button>
         <Link to={'/visualizer'}>
