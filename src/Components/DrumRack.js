@@ -5,7 +5,13 @@ const DrumRack = (props) => {
     <div className="single-rack">
       <div className="sample-name">{props.name}</div>
       {props.steps.map((step, i) =>
-        <DrumStep key={i} step={step}/>
+        <DrumStep
+          key={i}
+          index={i}
+          rackKey={props.name}
+          step={step}
+          toggleStep={props.toggleStep}
+        />
       )}
     </div>
   )

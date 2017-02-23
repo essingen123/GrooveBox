@@ -6,7 +6,7 @@ body {
 
 /*App Component*/
 .audio-player {
-  display: none;
+  /*display: none;*/
 }
 
 /*Drum Machine Component*/
@@ -16,13 +16,26 @@ body {
   flex-direction: column;
   width: 90vw;
   height: 90vh;
-  margin: auto;
+  margin: 20px auto;
 }
 
 #play-controls {
   display: flex;
   flex-direction: row;
   margin: 10px;
+  justify-content: flex-end;
+}
+
+#play-button {
+  margin: 10px 20px;
+}
+
+#visuals-link {
+  margin: 10px 20px;
+}
+
+#instructions-link {
+  margin: 10px 20px;
 }
 
 #drum-racks {
@@ -44,6 +57,8 @@ body {
 }
 
 .step {
+  padding: 15px;
+  background-color: black;
 }
 
 .step-on {

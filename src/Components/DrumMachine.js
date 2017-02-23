@@ -7,19 +7,20 @@ const DrumMachine = (props) => {
     <div id='drum-machine-container'>
 
       <div id='play-controls'>
-        <div>play</div>
-        <div>stop</div>
+        <button id='play-button' onClick={()=>props.playPause()} >
+          play/pause
+        </button>
         <Link to={'/visualizer'}>
-          <button>visualzzz</button>
+          <button id='visuals-link'>visualizer</button>
         </Link>
         <Link to={'/instructions'}>
-          <button>I need more instruction</button>
+          <button id='instructions-link'>instructions</button>
         </Link>
       </div>
 
       <div id='drum-racks'>
         {Object.keys(props.drumRacks).map((drumRack, i) =>
-          <DrumRack key={i} name={drumRack} steps={props.drumRacks[drumRack]}/>
+          <DrumRack key={i} name={drumRack} steps={props.drumRacks[drumRack]} toggleStep={props.toggleStep}/>
         )}
       </div>
 
