@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactHowler from 'react-howler';
 import howler from 'howler';
 
 export default class App extends Component {
@@ -8,15 +7,18 @@ export default class App extends Component {
     this.state={
       playMusic: false,
       currentStep: 0,
+      tempo: 200,
       drumRacks: {
         Kick: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
         Clap: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
-        HiHat: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
+        ClosedHat: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
+        OpenHat: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
         Bass: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
       },
       sounds: {
         Kick: new howler.Howl({src: ['Sounds/Kick.mp3']}),
-        HiHat: new howler.Howl({src: ['Sounds/HiHat.mp3']}),
+        OpenHat: new howler.Howl({src: ['Sounds/OpenHat.mp3']}),
+        ClosedHat: new howler.Howl({src: ['Sounds/ClosedHat.mp3']}),
         Clap: new howler.Howl({src: ['Sounds/Clap.mp3']}),
         Bass: new howler.Howl({src: ['Sounds/Bass.mp3']})
       },
@@ -26,7 +28,6 @@ export default class App extends Component {
   componentDidMount() {
     this.playLoop()
   }
-
 
   toggleStep(key, index) {
     let newRack = this.state.drumRacks
@@ -54,16 +55,22 @@ export default class App extends Component {
   }
 
   playLoop() {
-    setInterval(this.playStep.bind(this), 200)
+    this.playStep()
+    setTimeout(this.playLoop.bind(this),this.state.tempo)
+  }
+
+  updateTempo(e) {
+    this.setState({tempo: +e.target.value})
   }
 
   render() {
-
     const Children = React.cloneElement(this.props.children, {
       toggleStep: this.toggleStep.bind(this),
       playPause: this.playPause.bind(this),
+      updateTempo: this.updateTempo.bind(this),
       currentStep: this.state.currentStep,
       drumRacks: this.state.drumRacks,
+      tempo: this.state.tempo,
     })
 
     return (
