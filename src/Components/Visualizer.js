@@ -8,8 +8,7 @@ export default class Visualizer extends React.Component {
   render(){
     return (
       <div id="visualizer-container">
-        <h1>Visualizer.</h1>
-        <P5Wrapper sketch={sketch} />
+        <P5Wrapper sketch={sketch} props={this.props}/>
         <Link to={'/drummachine'}>
           <button>back to the drums</button>
         </Link>

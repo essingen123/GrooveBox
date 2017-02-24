@@ -1,32 +1,30 @@
+// p.reDraw = function (props) {
+//   if (props.rotation){
+//     rotation = props.rotation * Math.PI / 180;
+//   }
+// };
 
 const sketch = (p) => {
   let rotation = 0;
+  let y;
   p.setup = function () {
-    p.createCanvas(800, 450, p.WEBGL);
-  };
-  p.reDraw = function (props) {
-    if (props.rotation){
-      rotation = props.rotation * Math.PI / 180;
-    }
-  };
-  p.draw = function () {
-    p.background(100);
-    p.noStroke();
-
-    p.push();
-    p.translate(-150, 100);
-    p.rotateY(rotation);
-    p.rotateX(-0.9);
-    p.box(100);
-    p.pop();
-
-    p.noFill();
+    p.createCanvas(p.displayWidth, .8*(p.displayHeight));
     p.stroke(255);
-    p.push();
-    p.translate(500, p.height*0.35, -200);
-    p.sphere(300);
-    p.pop();
+    p.noLoop();
+   y = p.height * 0.5;
   };
+  p.draw = () => {
+    p.background(0);
+    y = y - 4;
+    if (y < 0) {
+      y = p.height;
+    }
+    p.line(0, y, p.width, y);
+  }
+
+  p.mousePressed = ()=>{
+    p.redraw();
+  }
 };
 
 export default sketch
