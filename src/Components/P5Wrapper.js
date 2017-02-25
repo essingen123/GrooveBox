@@ -7,7 +7,7 @@ export default class P5Wrapper extends React.Component {
 
   componentDidMount() {
     this.canvas = new p5(this.props.sketch, this.wrapper);
-    if( this.canvas.reDraw ) {
+    if(this.canvas.reDraw) {
       this.canvas.reDraw(this.props);
     }
   }

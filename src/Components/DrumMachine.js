@@ -15,8 +15,8 @@ const DrumMachine = (props) => {
       <div id='play-controls'>
         <h1 id="drum-logo">VaporGrooves</h1>
         <div id='tempo-slider'>
-          <input type="range" min="100" max="500" value={props.tempo} onChange={(e)=>props.updateTempo(e)} />
-          <p>+ tempo -</p>
+          <input type="range" min="100" max="375" value={props.tempo} onChange={(e)=>props.updateTempo(e)} />
+          <p>- tempo +</p>
         </div>
         <button id='play-button' onClick={()=>props.playPause()} >
           play/pause

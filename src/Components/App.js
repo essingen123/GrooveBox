@@ -9,11 +9,11 @@ export default class App extends Component {
       currentStep: 0,
       tempo: 200,
       drumRacks: {
-        Kick: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
-        Clap: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
-        ClosedHat: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
+        Kick: [true,false,false,false,true,false,false,false,true,false,false,false,true,false,false,false],
+        Clap: [false,false,true,false,false,false,false,true,false,false,true,false,false,false,true,false],
+        ClosedHat: [false,true,true,true,true,true,true,true,true,false,true,false,true,false,true,true],
         OpenHat: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
-        Bass: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
+        Bass: [false,true,false,true,false,true,false,true,false,true,true,false,true,false,true,false],
       },
       sounds: {
         Kick: new howler.Howl({src: ['Sounds/Kick.mp3']}),
