@@ -1,8 +1,3 @@
-// p.reDraw = function (props) {
-//   if (props){
-//     rotation = props.rotation * Math.PI / 180;
-//   }
-// };
 
 const sketch = (p) => {
   let kickRadius = 50;
@@ -12,7 +7,7 @@ const sketch = (p) => {
   let bassRadius = 50;
 
 
-  p.setup = function () {
+  p.setup = () => {
     p.createCanvas(1200, .8*(p.displayHeight));
   };
 
@@ -47,7 +42,7 @@ const sketch = (p) => {
     p.ellipse(1000, p.height/2, bassRadius);
   }
 
-  p.reDraw = function (props) {
+  p.reDraw = (props) => () {
     if (props){
       if(props.drumRacks['Kick'][props.currentStep]){
         kickRadius = 200;

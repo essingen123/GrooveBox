@@ -1,9 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import P5Wrapper from './P5Wrapper';
-import sketch from './sketch-circles';
-
-// export default class Visualizer extends React.Component {
+import sketch from './sketch-synth';
 
 const Visualizer = (props) => {
 
@@ -15,7 +13,7 @@ const Visualizer = (props) => {
 
   return (
     <div id="visualizer-container" tabIndex='0' onKeyPress={(e)=>spaceBar(e)}>
-      <P5Wrapper sketch={sketch} drumRacks={props.drumRacks} currentStep = {props.currentStep}/>
+      <P5Wrapper sketch={sketch} drumRacks={props.drumRacks} currentStep={props.currentStep}/>
       <div id="links-wrapper">
         <Link to={'/drummachine'}>
           <button>back to the drums</button>
