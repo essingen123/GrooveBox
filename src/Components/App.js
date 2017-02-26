@@ -9,11 +9,11 @@ export default class App extends Component {
       currentStep: 0,
       tempo: 200,
       drumRacks: {
-        Kick: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
-        Clap: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
-        ClosedHat: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
+        Kick: [true,false,false,false,true,false,false,false,true,false,false,false,true,false,false,false],
+        Clap: [false,false,true,false,false,false,false,true,false,false,true,false,false,false,true,false],
+        ClosedHat: [false,true,true,true,true,true,true,true,true,false,true,false,true,false,true,true],
         OpenHat: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
-        Bass: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
+        Bass: [false,true,false,true,false,true,false,true,false,true,true,false,true,false,true,false],
       },
       sounds: {
         Kick: new howler.Howl({src: ['Sounds/Kick.mp3']}),
@@ -22,6 +22,7 @@ export default class App extends Component {
         Clap: new howler.Howl({src: ['Sounds/Clap.mp3']}),
         Bass: new howler.Howl({src: ['Sounds/Bass.mp3']})
       },
+      mute: {Kick: false, OpenHat: false, ClosedHat: false, Clap: false, Bass: false},
     }
   }
 
@@ -35,6 +36,30 @@ export default class App extends Component {
     this.setState({ drumRacks: newRack })
   }
 
+  toggleMute(keyPress) {
+    let newMute = this.state.mute;
+    switch (keyPress) {
+      case 49:
+        newMute['Kick'] = !newMute['Kick'];
+        return;
+      case 50:
+        newMute['Clap'] = !newMute['Clap'];
+        return;
+      case 51:
+        newMute['ClosedHat'] = !newMute['ClosedHat'];
+        return;
+      case 52:
+        newMute['OpenHat'] = !newMute['OpenHat'];
+        return;
+      case 53:
+        newMute['Bass'] = !newMute['Bass'];
+        return;
+      default:
+      return;
+    }
+    this.setState({ mute: newMute })
+  }
+
   playPause() {
     this.setState({ playMusic: !this.state.playMusic })
   }
@@ -42,7 +67,7 @@ export default class App extends Component {
   playStep() {
     if (this.state.playMusic){
       Object.keys(this.state.drumRacks).forEach((key)=>{
-        if(this.state.drumRacks[key][this.state.currentStep]){
+        if(this.state.drumRacks[key][this.state.currentStep] && (!this.state.mute[key])){
           this.state.sounds[key].play()
         }
       })
@@ -68,9 +93,11 @@ export default class App extends Component {
       toggleStep: this.toggleStep.bind(this),
       playPause: this.playPause.bind(this),
       updateTempo: this.updateTempo.bind(this),
+      toggleMute: this.toggleMute.bind(this),
       currentStep: this.state.currentStep,
       drumRacks: this.state.drumRacks,
       tempo: this.state.tempo,
+      mute: this.state.mute,
     })
 
     return (

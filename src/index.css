@@ -16,20 +16,26 @@ button {
 
 /*Instructions Component*/
 #instructions-container {
-  border: 5px solid white;
+  border: 1px solid white;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  height: inherit;
+  background-image: url(./8bit-trex.svg);
+  color: #fffa23;
+  text-shadow:
+   1px 1px 0 #333,
+   1px 0 0 #333,
+   0 1px 0 #333;
+}
+
+#trex-layer {
   width: 80vw;
   height: 80vh;
   margin: 40px auto;
+  border: 5px solid white;
   background: linear-gradient(to bottom, #3ed90a 0%, #3ecef1 100%);
-  color: #f6f666;
-  text-shadow:
-   1px 1px 0 #999,
-   1px 0 0 #999,
-   0 1px 0 #999;
 
 }
 
@@ -37,14 +43,14 @@ h1 {
   font-family: 'Faster One', cursive;
   font-size: 80px;
   text-shadow:
-    /*-3px -3px 0 #999,*/
-    -3px 3px 0 #999,
-    -3px 0 0 #999;
-    /*3px -3px 0 #999;*/
-    /*3px 3px 0 #999,*/
-    /*3px 0 0 #999,*/
-    /*0 -3px 0 #999,*/
-    /*0 3px 0 #999;*/
+    /*-3px -3px 0 #333,*/
+    -3px 3px 0 #333,
+    -3px 0 0 #333;
+    /*3px -3px 0 #333;*/
+    /*3px 3px 0 #333,*/
+    /*3px 0 0 #333,*/
+    /*0 -3px 0 #333,*/
+    /*0 3px 0 #333;*/
 }
 
 #link-to-drums {
@@ -85,6 +91,9 @@ h1 {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+}
+#tempo-slider input {
+  transform: rotate(180deg);
 }
 
 #tempo-slider p {
@@ -154,7 +163,14 @@ h1 {
 
 /*Visualizer Component*/
 #visualizer-container {
+  margin-top: 5vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+#links-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }

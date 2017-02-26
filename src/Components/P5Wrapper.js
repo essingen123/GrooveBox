@@ -2,12 +2,13 @@
 
 import React from 'react';
 import p5 from 'p5';
+import 'p5/lib/addons/p5.sound.js';
 
 export default class P5Wrapper extends React.Component {
 
   componentDidMount() {
     this.canvas = new p5(this.props.sketch, this.wrapper);
-    if( this.canvas.reDraw ) {
+    if(this.canvas.reDraw) {
       this.canvas.reDraw(this.props);
     }
   }
