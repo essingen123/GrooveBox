@@ -3,14 +3,16 @@ import DrumRack from './DrumRack'
 import { Link } from 'react-router';
 
 const DrumMachine = (props) => {
-  const spaceBar = (e) =>{
+
+  const keyPress = (e) =>{
+    props.toggleMute(e.charCode);
     if(e.charCode===32){
       props.playPause();
     }
   }
 
   return(
-    <div id='drum-machine-container' tabIndex='0' onKeyPress={(e)=>spaceBar(e)}>
+    <div id='drum-machine-container' tabIndex='0' onKeyPress={(e)=>keyPress(e)}>
 
       <div id='play-controls'>
         <h1 id="drum-logo">VaporGrooves</h1>
