@@ -7,17 +7,18 @@ const sketch = (p) => {
   let closedRadius = 50;
   let openRadius = 50;
   let bassRadius = 50;
-  let osc, envelope, fft, reverb;
-  let midiValue;
+  let osc, envelope, fft, reverb, delay, midiValue;
 
   p.setup = () => {
     p.createCanvas(1200, .8*(p.displayHeight));
     osc = new p5.SinOsc();
     reverb = new p5.Reverb();
+    delay = new p5.Delay();
     envelope = new p5.Env();
     envelope.setADSR(0.001, 0.5, 0.1, 0.5);
     envelope.setRange(1, 0);
-    reverb.process(osc,2,3)
+    // reverb.process(osc,2,2,false) //source, seconds, decay, reverse
+    // delay.process(osc, .12, .8, 2300);//source, delay, feedback, lowpass
     osc.start();
     fft = new p5.FFT();
     p.noStroke();
@@ -69,11 +70,13 @@ const sketch = (p) => {
 
     let freqValue = p.midiToFreq(midiValue);
     osc.freq(freqValue);
+    if (midiValue===0){osc.amp(0)}
+    else osc.amp(1)
     if (p.keyIsDown()) {envelope.play(osc, 0, 0.1)}
 
     // plot FFT.analyze() frequency analysis on the canvas
     let spectrum = fft.analyze();
-    for (let i = 0; i < spectrum.length*2; i++) {
+    for (let i = 0; i < spectrum.length*4; i++) {
       p.fill(spectrum[i], spectrum[i]/10, 0);
       let x = p.map(i, 0, spectrum.length/20, 0, p.width);
       let h = p.map(spectrum[i], 0, 255, 0, p.height);
