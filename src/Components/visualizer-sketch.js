@@ -8,8 +8,7 @@ const sketch = (p) => {
   let openRadius = 50;
   let bassRadius = 50;
   let osc, envelope, fft, reverb;
-  let scaleArray = [40, 43, 45, 48, 50, 52, 55, 57, 50, 60, 69, 71, 72];
-  let note = 0;
+  let midiValue;
 
   p.setup = () => {
     p.createCanvas(1200, .8*(p.displayHeight));
@@ -19,7 +18,7 @@ const sketch = (p) => {
     envelope.setADSR(0.001, 0.5, 0.1, 0.5);
     envelope.setRange(1, 0);
     reverb.process(osc,2,3)
-    // osc.start();
+    osc.start();
     fft = new p5.FFT();
     p.noStroke();
   };
@@ -54,18 +53,27 @@ const sketch = (p) => {
     p.fill(255, 43, 56);
     p.ellipse(1000, p.height/2, openRadius);
 
-    if (p.frameCount % 60 === 0 || p.frameCount === 1) {
-      let midiValue = scaleArray[note];
-      let freqValue = p.midiToFreq(midiValue);
-      osc.freq(freqValue);
+    //map homerow to midi values
+    if (p.keyIsDown(65)) {midiValue = 57} //a
+    else midiValue = 0;
+    if (p.keyIsDown(83)) {midiValue = 59} //s
+    if (p.keyIsDown(68)) {midiValue = 62} //d
+    if (p.keyIsDown(70)) {midiValue = 65} //f
+    if (p.keyIsDown(71)) {midiValue = 68} //g
+    if (p.keyIsDown(72)) {midiValue = 71} //h
+    if (p.keyIsDown(74)) {midiValue = 74} //j
+    if (p.keyIsDown(75)) {midiValue = 77} //k
+    if (p.keyIsDown(76)) {midiValue = 79} //l
+    if (p.keyIsDown(186)) {midiValue = 81} //;
+    if (p.keyIsDown(222)) {midiValue = 84} //'
 
-      envelope.play(osc, 0, 0.1);
-      note = (note + 1) % scaleArray.length;
-    }
+    let freqValue = p.midiToFreq(midiValue);
+    osc.freq(freqValue);
+    if (p.keyIsDown()) {envelope.play(osc, 0, 0.1)}
 
     // plot FFT.analyze() frequency analysis on the canvas
     let spectrum = fft.analyze();
-    for (let i = 0; i < spectrum.length/20; i++) {
+    for (let i = 0; i < spectrum.length*2; i++) {
       p.fill(spectrum[i], spectrum[i]/10, 0);
       let x = p.map(i, 0, spectrum.length/20, 0, p.width);
       let h = p.map(spectrum[i], 0, 255, 0, p.height);
@@ -75,7 +83,7 @@ const sketch = (p) => {
   }
 
   p.reDraw = (props) => {
-    if (props){
+    if (props) {
       if(props.drumRacks['Kick'][props.currentStep] && (!props.mute['Kick'])){
         kickRadius = 200;
       }
@@ -93,7 +101,6 @@ const sketch = (p) => {
       }
 
     }
-
   };
 
 };
