@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import P5Wrapper from './P5Wrapper';
-import sketch from './sketch-circles';
+import sketch from './visualizer-sketch';
 
 const Visualizer = (props) => {
 
