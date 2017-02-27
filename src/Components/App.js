@@ -9,7 +9,7 @@ export default class App extends Component {
       currentStep: 0,
       tempo: 200,
       drumRacks: {
-        Kick: [true,false,false,false,true,false,false,false,true,false,false,false,true,false,false,false],
+        Kick: [false,false,false,false,true,false,false,false,true,false,false,false,true,false,false,false],
         Clap: [false,false,true,false,false,false,false,true,false,false,true,false,false,false,true,false],
         ClosedHat: [false,true,true,true,true,true,true,true,true,false,true,false,true,false,true,true],
         OpenHat: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
@@ -87,6 +87,7 @@ export default class App extends Component {
   updateTempo(e) {
     this.setState({tempo: +e.target.value})
   }
+
 
   render() {
     const Children = React.cloneElement(this.props.children, {
