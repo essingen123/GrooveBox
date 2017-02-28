@@ -17,8 +17,8 @@ const sketch = (p) => {
     envelope = new p5.Env();
     envelope.setADSR(0.001, 0.5, 0.1, 0.5);
     envelope.setRange(1, 0);
-    reverb.process(osc,2,2,false) //source, seconds, decay, reverse
-    delay.process(osc, .12, .8, 2300);//source, delay, feedback, lowpass
+    // reverb.process(osc,2,2,false) //source, seconds, decay, reverse
+    // delay.process(osc, .12, .8, 2300);//source, delay, feedback, lowpass
     osc.start();
     fft = new p5.FFT();
     p.noStroke();
@@ -74,13 +74,16 @@ const sketch = (p) => {
     else osc.amp(1)
     if (p.keyIsDown()) {envelope.play(osc, 0, 0.1)}
 
-    // plot FFT.analyze() frequency analysis on the canvas
     let spectrum = fft.analyze();
+
     for (let i = 0; i < spectrum.length*4; i++) {
-      p.fill(spectrum[i], spectrum[i]/10, 0);
-      let x = p.map(i, 0, spectrum.length/20, 0, p.width);
+      p.fill(spectrum[i], spectrum[i]/10, 140);//color,saturation,brightness
+//p5 map takes (value,currentLow,currentHigh,targetLow,targetHigh) returns remapped num
+      let x = p.map(i, 0, spectrum.length/18, 0, p.width);
       let h = p.map(spectrum[i], 0, 255, 0, p.height);
-      p.ellipse(x, p.height, spectrum.length/20, -h);
+
+      p.rect(x, p.height/2, spectrum.length/100, -h/2);
+      p.rect(x, p.height/2, -spectrum.length/100, h/2);
     }
 
   }
