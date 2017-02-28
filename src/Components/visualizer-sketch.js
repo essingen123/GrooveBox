@@ -17,8 +17,8 @@ const sketch = (p) => {
     envelope = new p5.Env();
     envelope.setADSR(0.001, 0.5, 0.1, 0.5);
     envelope.setRange(1, 0);
-    // reverb.process(osc,2,2,false) //source, seconds, decay, reverse
-    // delay.process(osc, .12, .8, 2300);//source, delay, feedback, lowpass
+    reverb.process(osc,2,2,false) //source, seconds, decay, reverse
+    delay.process(osc, .12, .8, 2300);//source, delay, feedback, lowpass
     osc.start();
     fft = new p5.FFT();
     p.noStroke();
