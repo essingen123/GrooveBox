@@ -10,7 +10,7 @@ const sketch = (p) => {
   let osc, envelope, fft, reverb, delay, midiValue;
 
   p.setup = () => {
-    p.createCanvas(1200, .8*(p.displayHeight));
+    p.createCanvas(1000, .7*(p.displayHeight));
     p.frameRate(30)
     osc = new p5.SinOsc();
     reverb = new p5.Reverb();
@@ -44,16 +44,16 @@ const sketch = (p) => {
       bassRadius -= 4;
     }
 
-    p.fill(255, 43, 56);
-    p.ellipse(200, p.height/2, kickRadius);
-    p.fill(255, 43, 56);
-    p.ellipse(400, p.height/2, clapRadius);
-    p.fill(255, 43, 56);
-    p.ellipse(600, p.height/2, closedRadius);
-    p.fill(255, 43, 56);
-    p.ellipse(800, p.height/2, bassRadius);
-    p.fill(255, 43, 56);
-    p.ellipse(1000, p.height/2, openRadius);
+    p.fill('rgba(255,43,56, 0.8)');
+    p.ellipse(166, p.height/2, kickRadius);
+    p.fill('rgba(255,43,56, 0.8)');
+    p.ellipse(332, p.height/2, clapRadius);
+    p.fill('rgba(255,43,56, 0.8)');
+    p.ellipse(500, p.height/2, closedRadius);
+    p.fill('rgba(255,43,56, 0.8)');
+    p.ellipse(666, p.height/2, bassRadius);
+    p.fill('rgba(255,43,56, 0.8)');
+    p.ellipse(830, p.height/2, openRadius);
 
     //map homerow to midi values
     if (p.keyIsDown(65)) {midiValue = 57} //a
