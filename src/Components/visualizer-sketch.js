@@ -11,14 +11,15 @@ const sketch = (p) => {
 
   p.setup = () => {
     p.createCanvas(1200, .8*(p.displayHeight));
+    p.frameRate(30)
     osc = new p5.SinOsc();
     reverb = new p5.Reverb();
     delay = new p5.Delay();
     envelope = new p5.Env();
     envelope.setADSR(0.001, 0.5, 0.1, 0.5);
     envelope.setRange(1, 0);
-    // reverb.process(osc,2,2,false) //source, seconds, decay, reverse
-    // delay.process(osc, .12, .8, 2300);//source, delay, feedback, lowpass
+    reverb.process(osc,2,2,false); //source, seconds, decay, reverse
+    delay.process(osc, .12, .8, 2300); //source, delay, feedback, lowpass
     osc.start();
     fft = new p5.FFT();
     p.noStroke();
@@ -102,7 +103,7 @@ const sketch = (p) => {
       if(props.drumRacks['OpenHat'][props.currentStep] && (!props.mute['OpenHat'])){
         openRadius = 200;
       }
-      if(props.drumRacks['Bass'][props.currentStep] && (!props.mute['Bass'])){
+      if(props.drumRacks['E40'][props.currentStep] && (!props.mute['E40'])){
         bassRadius = 200;
       }
 

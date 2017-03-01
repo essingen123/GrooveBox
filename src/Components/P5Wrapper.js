@@ -13,17 +13,25 @@ export default class P5Wrapper extends React.Component {
     }
   }
 
-  componentWillReceiveProps(newprops) {
-    if(this.props.sketch !== newprops.sketch){
+  componentWillReceiveProps(nextProps) {
+    if(this.props.sketch !== nextProps.sketch){
       this.wrapper.removeChild(this.wrapper.childNodes[0]);
-      this.canvas = new p5(newprops.sketch, this.wrapper);
+      this.canvas = new p5(nextProps.sketch, this.wrapper);
     }
     if( this.canvas.reDraw ) {
-      this.canvas.reDraw(newprops);
+      this.canvas.reDraw(nextProps);
     }
+  }
+
+  componentWillUnmount() {
+    console.log(this.wrapper.childNodes[0])
+    this.wrapper.removeChild(this.wrapper.childNodes[0])
+    console.log(this.wrapper.childNodes[0])
+
   }
 
   render() {
     return <div ref={wrapper => this.wrapper = wrapper}></div>;
   }
+
 }
