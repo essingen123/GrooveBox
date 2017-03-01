@@ -6,23 +6,17 @@ export default class App extends Component {
     super()
     this.state={
       playMusic: false,
+      e40: true,
       currentStep: 0,
       tempo: 200,
       drumRacks: {
+        E40: [false,false,false,false,false,false,false,true,false,false,false,false,false,false,false,true],
         Kick: [false,false,false,false,true,false,false,false,true,false,false,false,true,false,false,false],
-        Clap: [false,false,true,false,false,false,false,true,false,false,true,false,false,false,true,false],
+        Clap: [false,false,true,false,false,false,true,false,false,false,true,false,false,false,true,false],
         ClosedHat: [false,true,true,true,true,true,true,true,true,false,true,false,true,false,true,true],
         OpenHat: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
-        Bass: [false,true,false,true,false,true,false,true,false,true,true,false,true,false,true,false],
       },
-      sounds: {
-        Kick: new howler.Howl({src: ['Sounds/Kick.mp3']}),
-        OpenHat: new howler.Howl({src: ['Sounds/OpenHat.mp3']}),
-        ClosedHat: new howler.Howl({src: ['Sounds/ClosedHat.mp3']}),
-        Clap: new howler.Howl({src: ['Sounds/Clap.mp3']}),
-        Bass: new howler.Howl({src: ['Sounds/Bass.mp3']})
-      },
-      mute: {Kick: false, OpenHat: false, ClosedHat: false, Clap: false, Bass: false},
+      mute: {Kick: false, OpenHat: false, ClosedHat: false, Clap: false, E40: false},
     }
   }
 
@@ -40,20 +34,20 @@ export default class App extends Component {
     let newMute = this.state.mute;
     switch (keyPress) {
       case 49:
-        newMute['Kick'] = !newMute['Kick'];
-        return;
-      case 50:
-        newMute['Clap'] = !newMute['Clap'];
-        return;
-      case 51:
-        newMute['ClosedHat'] = !newMute['ClosedHat'];
-        return;
-      case 52:
-        newMute['OpenHat'] = !newMute['OpenHat'];
-        return;
-      case 53:
         newMute['Bass'] = !newMute['Bass'];
-        return;
+        break;
+      case 50:
+        newMute['Kick'] = !newMute['Kick'];
+        break;
+      case 51:
+        newMute['Clap'] = !newMute['Clap'];
+        break;
+      case 52:
+        newMute['ClosedHat'] = !newMute['ClosedHat'];
+        break;
+      case 53:
+        newMute['OpenHat'] = !newMute['OpenHat'];
+        break;
       default:
       return;
     }
@@ -64,11 +58,24 @@ export default class App extends Component {
     this.setState({ playMusic: !this.state.playMusic })
   }
 
+
+
   playStep() {
+    let e40sample;
+    {this.state.e40 ? e40sample = (new howler.Howl({src: ['Sounds/E40-Nope.mp3']})) : e40sample = (new howler.Howl({src: ['Sounds/E40-Yup.mp3']}))}
+    let sounds = {
+      E40: e40sample,
+      Kick: new howler.Howl({src: ['Sounds/Kick.mp3']}),
+      OpenHat: new howler.Howl({src: ['Sounds/OpenHat.mp3']}),
+      ClosedHat: new howler.Howl({src: ['Sounds/ClosedHat.mp3']}),
+      Clap: new howler.Howl({src: ['Sounds/Clap.mp3']}),
+    }
+
     if (this.state.playMusic){
       Object.keys(this.state.drumRacks).forEach((key)=>{
+        if(this.state.drumRacks[key][this.state.currentStep] && key==='E40'){this.setState({e40: !this.state.e40})}
         if(this.state.drumRacks[key][this.state.currentStep] && (!this.state.mute[key])){
-          this.state.sounds[key].play()
+          sounds[key].play()
         }
       })
       if (this.state.currentStep < 15){

@@ -1,5 +1,6 @@
 import React from 'react';
 import DrumStep from './DrumStep';
+
 const DrumRack = (props) => {
   return(
     <div className="single-rack">
