@@ -10,7 +10,7 @@ export default class App extends Component {
       currentStep: 0,
       tempo: 200,
       drumRacks: {
-        E40: [false,false,false,false,false,false,false,true,false,false,false,false,false,false,false,true],
+        E40: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
         Kick: [false,false,false,false,true,false,false,false,true,false,false,false,true,false,false,false],
         Clap: [false,false,true,false,false,false,true,false,false,false,true,false,false,false,true,false],
         ClosedHat: [false,true,true,true,true,true,true,true,true,false,true,false,true,false,true,true],

@@ -1,67 +1,110 @@
 @import url('https://fonts.googleapis.com/css?family=Faster+One|Share+Tech+Mono');
+@import url('https://fonts.googleapis.com/css?family=Fascinate+Inline');
+
 
 body {
   margin: 0;
   padding: 0;
   font-family: 'Share Tech Mono', monospace;
-  background: linear-gradient(-35deg, #92014b 0%, #91e965 100%);
+  background-color: rgba(62, 206, 241, .5);
 }
 
 button {
+  background-color: rgba(255, 204, 252, 0.8);
+  color: rgb(243, 89, 237);
+  /*text-shadow:
+   1px 1px 0 #333,
+   1px 0 0 #333,
+   0 1px 0 #333;*/
+  border: none;
+  border-radius: 5px;
   width: 100px;
   height: 35px;
   font-family: 'Share Tech Mono', monospace;
-  font-size: 12px;
+  font-size: 14px;
+  box-shadow: 2px 2px 200px 1px pink;
+  transition: .5s;
 }
 
+button:hover {
+  background-color: rgba(255, 204, 252, 0.9);
+  box-shadow: 0px 0px 10px 3px pink;
+  transition: .3s;
+}
+
+a:focus{
+  outline: none;
+}
 
 /*Instructions Component*/
-#instructions-container {
-  border: 1px solid white;
+#instructions-container{
+  height: inherit;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: inherit;
-  background-image: url(./8bit-trex.svg);
-  color: #fffa23;
-  text-shadow:
-   1px 1px 0 #333,
-   1px 0 0 #333,
-   0 1px 0 #333;
+  border-radius: 20px;
+  box-shadow: 4px 5px 20px 2px pink;
 }
 
 #trex-layer {
   width: 80vw;
   height: 80vh;
   margin: 40px auto;
-  border: 5px solid white;
-  background: linear-gradient(to bottom, #3ed90a 0%, #3ecef1 100%);
+  border-radius: 20px;
+  background-color: rgba(255, 230, 230, .8);
 }
 
 h1 {
-  font-family: 'Faster One', cursive;
+  font-family: 'Fascinate Inline', cursive;
+  margin: 80px auto 30px;
+  width: 100%;
   font-size: 80px;
-  text-shadow:
-    -3px 3px 0 #333,
-    -3px 0 0 #333;
+  text-align: center;
+  padding: 0px 0px 10px;
+  /*box-shadow: 1px 6px 12px 2px pink;*/
+
 }
 
+
+h3 {
+  font-size: 25px;
+  margin-bottom: 5px;
+}
+
+li {
+  list-style: none;
+  margin: 5px;
+}
+
+
 #link-to-drums {
-  margin: 30px auto;
+  margin: 40px auto;
+  width: 170px;
+  height: 50px;
+  font-size: 20px;
+}
+
+#trex-layer p {
+  margin-top: 80px;
 }
 
 /*Drum Machine Component*/
 #drum-machine-container {
-  border: 3px solid rgba(255, 250, 250, 0.3);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   width: 90vw;
   height: auto;
-  margin: 15vh auto;
-  background-color: rgba(255, 250, 250, 0.8);
-  box-shadow: 0px 0px 20px 20px pink;
+  margin: 10vh auto;
+  padding: 5px 10px 20px;
+  background-color: rgba(255, 230, 230, 0.8);
+  box-shadow: 5px 5px 20px 2px pink;
+  transition: .5s;
+}
+#drum-machine-container:hover{
+  box-shadow: 5px 10px 20px 10px pink;
+  transition: .5s;
 }
 #drum-machine-container:focus{
   outline: none;
@@ -79,6 +122,7 @@ h1 {
   margin: 0px 50px 10px 20px;
   color: #333;
   text-shadow: none;
+  box-shadow: none;
 }
 
 #tempo-slider {
@@ -92,7 +136,7 @@ h1 {
 }
 
 #tempo-slider p {
-  margin: 3px auto;
+  margin: 1px auto;
 }
 
 #play-button {
@@ -109,6 +153,7 @@ h1 {
 
 #drum-racks {
   padding-top: 30px;
+  padding-bottom: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -130,43 +175,62 @@ h1 {
 
 .step {
   padding: 5px 5px;
-  background-color: rgba(255, 109, 255, 0.5);
-  border: 3px solid #ff6dff;
+  background-color: rgba(255, 204, 252, 0.7);
+  border: 3px solid rgba(255, 204, 255, 1);
   border-radius: 5px;
-  box-shadow: 0px 0px 3px 3px pink;
 }
 
 .current{
-  background-color: rgba(255, 109, 255, 1);
-  box-shadow: 0px 0px 10px 25px pink;
-
+  background-color: rgba(255, 155, 252, .9);
+  box-shadow: 0px 0px 30px 10px pink;
 }
 
 .step-off {
   height: 40px;
   width: 20px;
-  background-color: rgba(28,117,198,.8);
-  box-shadow: 0px 0px 3px 3px rgba(28,117,198,.5);
+  border-radius: 3px;
+  background-color: rgba(95,179,255,.8);
+  box-shadow: inset 0px 0px 2px 2px rgba(28,117,198,.3);
+  transition: .1s;
 
 }
 
 .step-on {
   height: 40px;
   width: 20px;
-  background-color: rgba(245,192,126,1);
-  box-shadow: 0px 0px 3px 3px rgba(245,192,126,.5);
+  border-radius: 3px;
+  background-color: rgba(255, 85, 248, .7);
+  box-shadow: inset 0px 0px 2px 2px rgba(255,85,248,.8);
+  transition: .1s
 }
 
 /*Visualizer Component*/
 #visualizer-container {
-  margin-top: 5vh;
+  margin-top: 3vh;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+#visualizer-container:focus{
+  outline: none;
+}
+
 #links-wrapper {
+  margin-top: 15px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+}
+
+#links-wrapper button {
+  margin: 3px 20px;
+}
+#instructions {
+  margin-top: 5px;
+  font-size: 12px;
+  text-align: center;
+}
+canvas {
+  border-radius: 10px;
+  box-shadow: 0px 0px 30px 10px pink;
 }

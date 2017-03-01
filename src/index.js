@@ -5,7 +5,7 @@ import Instructions from './Components/Instructions';
 import DrumMachine from './Components/DrumMachine';
 import Visualizer from './Components/Visualizer';
 import './reset.css';
-import './index.css';
+import './cleanStyles.css';
 import { Router, browserHistory, Route, IndexRedirect } from 'react-router';
 
 const router = (
