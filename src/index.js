@@ -4,6 +4,7 @@ import App from './Components/App';
 import Instructions from './Components/Instructions';
 import DrumMachine from './Components/DrumMachine';
 import Visualizer from './Components/Visualizer';
+import './reset.css';
 import './index.css';
 import { Router, browserHistory, Route, IndexRedirect } from 'react-router';
 
