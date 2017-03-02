@@ -36,6 +36,7 @@
     "deploy": "gh-pages -d build"
   },
   "dependencies": {
+    "crypto-js": "^3.1.9-1",
     "p5": "^0.5.7",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",

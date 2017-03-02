@@ -26,9 +26,9 @@ describe('<App/>', ()=> {
     chai.expect(wrapper.state('drumRacks').E40).to.eql([false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false]);
   });
 
-  it.skip('should have a toggleStep function', ()=> {
-    let wrapper = mount(<App children={<DrumMachine />}/>)
-    // console.log(wrapper.debug())
+  it('should have a toggleStep function', ()=> {
+    let wrapper = mount(<App children={<Instructions />}/>)
+    console.log(wrapper.debug())
     let component = wrapper.find('Component')
     // console.log(component.debug)
     chai.expect(component.toggleStep()).ok()

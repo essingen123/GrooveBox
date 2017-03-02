@@ -16,7 +16,7 @@ const Instructions = ()=> {
               gimme the beat
             </button>
           </Link>
-          <p>built with React, howlerJS, p5js, and a little bit of nostalgia</p>
+          <p>built with React, p5js, and a little bit of nostalgia</p>
         </div>
       </div>
     )

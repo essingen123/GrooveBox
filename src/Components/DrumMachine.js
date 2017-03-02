@@ -23,6 +23,9 @@ const DrumMachine = (props) => {
         <button id='play-button' onClick={()=>props.playPause()} >
           play/pause
         </button>
+        <button id='share-button' onClick={()=>props.resetLoops()}>
+          reset
+        </button>
         <Link to={'/visualizer'}>
           <button id='visuals-link'>
             visualizer
@@ -33,6 +36,9 @@ const DrumMachine = (props) => {
             instructions
           </button>
         </Link>
+        <button id='share-button' onClick={()=>props.encrypt()}>
+          share
+        </button>
       </div>
 
       <div id='drum-racks'>
