@@ -7,6 +7,7 @@ import 'p5/lib/addons/p5.sound.js';
 export default class P5Wrapper extends React.Component {
 
   componentWillMount() {
+    this.props.toggleCanvas();
   }
 
   componentDidMount() {
@@ -27,9 +28,7 @@ export default class P5Wrapper extends React.Component {
   }
 
   componentWillUnmount() {
-    console.log(this.wrapper.childNodes[0])
-    this.wrapper.removeChild(this.wrapper.childNodes[0])
-    console.log(this.wrapper.childNodes[0])
+    this.props.toggleCanvas();
   }
 
   render() {

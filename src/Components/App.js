@@ -16,8 +16,7 @@ export default class App extends Component {
         ClosedHat: [false,true,true,true,true,true,true,true,true,false,true,false,true,false,true,true],
         OpenHat: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
       },
-      mute: {Kick: false, OpenHat: false, ClosedHat: false, Clap: false, E40: false},
-      canvas: false,
+      mute: {Kick: false, OpenHat: false, ClosedHat: false, Clap: false, E40: false, Canvas: false},
     }
   }
 
@@ -48,6 +47,9 @@ export default class App extends Component {
         break;
       case 53:
         newMute['OpenHat'] = !newMute['OpenHat'];
+        break;
+      case 57:
+        newMute['Canvas'] = !newMute['Canvas'];
         break;
       default:
       return;
@@ -95,7 +97,9 @@ export default class App extends Component {
   }
 
   toggleCanvas() {
-    this.setState({canvas: !this.state.canvas})
+    let newMute = this.state.mute;
+    newMute['Canvas'] = false;
+    this.setState({canvas: newMute})
   }
 
   render() {
@@ -104,12 +108,11 @@ export default class App extends Component {
       playPause: this.playPause.bind(this),
       updateTempo: this.updateTempo.bind(this),
       toggleMute: this.toggleMute.bind(this),
+      toggleCanvas: this.toggleCanvas.bind(this),
       currentStep: this.state.currentStep,
       drumRacks: this.state.drumRacks,
       tempo: this.state.tempo,
       mute: this.state.mute,
-      canvas: this.state.canvas,
-      toggleCanvas: this.toggleCanvas.bind(this),
     })
 
     return (

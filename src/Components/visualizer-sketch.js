@@ -106,7 +106,7 @@ const sketch = (p) => {
       if(props.drumRacks['E40'][props.currentStep] && (!props.mute['E40'])){
         bassRadius = 200;
       }
-      if(props.canvas){p.remove()}
+      if(props.mute['Canvas']){p.remove()}
 
     }
   };
