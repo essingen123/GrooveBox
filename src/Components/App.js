@@ -19,7 +19,6 @@ export default class App extends Component {
         OpenHat: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
       },
       mute: {Kick: false, OpenHat: false, ClosedHat: false, Clap: false, E40: false, Canvas: false},
-      encrypt: {}
     }
   }
 
@@ -119,7 +118,6 @@ export default class App extends Component {
 
   encrypt() {
     let ciphertext = CryptoJS.AES.encrypt(JSON.stringify(this.state.drumRacks), 'secretkey123');
-    this.setState({encrypt: ciphertext.toString()})
     browserHistory.push(`/drummachine/${ciphertext.toString()}`)
   }
 
