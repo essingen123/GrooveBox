@@ -19,10 +19,11 @@ const Visualizer = (props) => {
         drumRacks={props.drumRacks}
         currentStep={props.currentStep}
         mute={props.mute}
+        canvas={props.canvas}
       />
       <div id="links-wrapper">
         <Link to={'/drummachine'}>
-          <button>back to the drums</button>
+          <button onClick={()=>props.toggleCanvas()}>back to the drums</button>
         </Link>
         <Link to={'/instructions'}>
           <button>I need more instruction</button>
