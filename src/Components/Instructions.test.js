@@ -15,11 +15,11 @@ describe('Instructions', function () {
     )
   })
 
-  it('renders an instructions-container', () => {
+  it('renders an link to the drum machine', () => {
     chai.expect(wrapper.find('#instructions-container')).to.have.length(1)
   });
 
-  it('renders an instructions list', () => {
+  it('renders a link to the instructions', () => {
     chai.expect(wrapper.find('li')).to.have.length(3)
   });
 
