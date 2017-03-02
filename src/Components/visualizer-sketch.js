@@ -56,17 +56,17 @@ const sketch = (p) => {
     p.ellipse(830, p.height/2, openRadius);
 
     //map homerow to midi values
-    if (p.keyIsDown(65)) {midiValue = 57} //a
+    if (p.keyIsDown(65)) {midiValue = 60} //a
     else midiValue = 0;
-    if (p.keyIsDown(83)) {midiValue = 59} //s
-    if (p.keyIsDown(68)) {midiValue = 62} //d
-    if (p.keyIsDown(70)) {midiValue = 65} //f
-    if (p.keyIsDown(71)) {midiValue = 68} //g
-    if (p.keyIsDown(72)) {midiValue = 71} //h
-    if (p.keyIsDown(74)) {midiValue = 74} //j
-    if (p.keyIsDown(75)) {midiValue = 77} //k
-    if (p.keyIsDown(76)) {midiValue = 79} //l
-    if (p.keyIsDown(186)) {midiValue = 81} //;
+    if (p.keyIsDown(83)) {midiValue = 64} //s
+    if (p.keyIsDown(68)) {midiValue = 67} //d
+    if (p.keyIsDown(70)) {midiValue = 71} //f
+    if (p.keyIsDown(71)) {midiValue = 72} //g
+    if (p.keyIsDown(72)) {midiValue = 76} //h
+    if (p.keyIsDown(74)) {midiValue = 77} //j
+    if (p.keyIsDown(75)) {midiValue = 79} //k
+    if (p.keyIsDown(76)) {midiValue = 81} //l
+    if (p.keyIsDown(186)) {midiValue = 83} //;
     if (p.keyIsDown(222)) {midiValue = 84} //'
 
     let freqValue = p.midiToFreq(midiValue);
@@ -106,6 +106,7 @@ const sketch = (p) => {
       if(props.drumRacks['E40'][props.currentStep] && (!props.mute['E40'])){
         bassRadius = 200;
       }
+      if(props.mute['Canvas']){p.remove()}
 
     }
   };

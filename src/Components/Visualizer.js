@@ -19,6 +19,8 @@ const Visualizer = (props) => {
         drumRacks={props.drumRacks}
         currentStep={props.currentStep}
         mute={props.mute}
+        canvas={props.canvas}
+        toggleCanvas={props.toggleCanvas}
       />
       <div id="links-wrapper">
         <Link to={'/drummachine'}>
@@ -28,7 +30,7 @@ const Visualizer = (props) => {
           <button>I need more instruction</button>
         </Link>
       </div>
-      <span id="instructions">(pro tip!) you can play a tune with your keyboard's home row, start/stop your loop with space bar, and mute individual drum tracks with keys 1-5</span>
+      <span id="instructions">(pro tip!) you can play a tune with your keyboard's home row, start/stop your loop with space bar, and mute individual drum tracks with keys 1-5. if you experience performance issues, kill the canvas with the '9' key before you leave the visualizer</span>
     </div>
   )
 }

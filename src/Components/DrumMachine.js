@@ -39,6 +39,7 @@ const DrumMachine = (props) => {
         {Object.keys(props.drumRacks).map((drumRack, i) =>
           <DrumRack key={i}
                     name={drumRack}
+                    mute={props.mute}
                     steps={props.drumRacks[drumRack]}
                     toggleStep={props.toggleStep}
                     currentStep={props.currentStep}

@@ -16,7 +16,7 @@ export default class App extends Component {
         ClosedHat: [false,true,true,true,true,true,true,true,true,false,true,false,true,false,true,true],
         OpenHat: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
       },
-      mute: {Kick: false, OpenHat: false, ClosedHat: false, Clap: false, E40: false},
+      mute: {Kick: false, OpenHat: false, ClosedHat: false, Clap: false, E40: false, Canvas: false},
     }
   }
 
@@ -34,7 +34,7 @@ export default class App extends Component {
     let newMute = this.state.mute;
     switch (keyPress) {
       case 49:
-        newMute['Bass'] = !newMute['Bass'];
+        newMute['E40'] = !newMute['E40'];
         break;
       case 50:
         newMute['Kick'] = !newMute['Kick'];
@@ -48,6 +48,9 @@ export default class App extends Component {
       case 53:
         newMute['OpenHat'] = !newMute['OpenHat'];
         break;
+      case 57:
+        newMute['Canvas'] = !newMute['Canvas'];
+        break;
       default:
       return;
     }
@@ -57,8 +60,6 @@ export default class App extends Component {
   playPause() {
     this.setState({ playMusic: !this.state.playMusic })
   }
-
-
 
   playStep() {
     let e40sample;
@@ -95,6 +96,11 @@ export default class App extends Component {
     this.setState({tempo: +e.target.value})
   }
 
+  toggleCanvas() {
+    let newMute = this.state.mute;
+    newMute['Canvas'] = false;
+    this.setState({canvas: newMute})
+  }
 
   render() {
     const Children = React.cloneElement(this.props.children, {
@@ -102,6 +108,7 @@ export default class App extends Component {
       playPause: this.playPause.bind(this),
       updateTempo: this.updateTempo.bind(this),
       toggleMute: this.toggleMute.bind(this),
+      toggleCanvas: this.toggleCanvas.bind(this),
       currentStep: this.state.currentStep,
       drumRacks: this.state.drumRacks,
       tempo: this.state.tempo,
