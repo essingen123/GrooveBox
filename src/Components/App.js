@@ -65,6 +65,17 @@ export default class App extends Component {
     this.setState({ playMusic: !this.state.playMusic })
   }
 
+  resetLoops() {
+    let emptyLoops={
+      E40: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
+      Kick: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
+      Clap: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
+      ClosedHat: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
+      OpenHat: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
+    }
+    this.setState({drumRacks: emptyLoops})
+  }
+
   playStep() {
     let e40sample;
     {this.state.e40 ? e40sample = (new howler.Howl({src: ['Sounds/E40-Nope.mp3']})) : e40sample = (new howler.Howl({src: ['Sounds/E40-Yup.mp3']}))}
@@ -126,6 +137,7 @@ export default class App extends Component {
         let bytes  = CryptoJS.AES.decrypt(trimmedLocation, 'secretkey123');
         let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
         this.setState({drumRacks: decryptedData});
+        browserHistory.push(`/drummachine`)
         break;
     }
   }
@@ -137,6 +149,7 @@ export default class App extends Component {
       updateTempo: this.updateTempo.bind(this),
       toggleMute: this.toggleMute.bind(this),
       toggleCanvas: this.toggleCanvas.bind(this),
+      resetLoops: this.resetLoops.bind(this),
       encrypt: this.encrypt.bind(this),
       currentStep: this.state.currentStep,
       drumRacks: this.state.drumRacks,
