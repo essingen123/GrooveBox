@@ -24,10 +24,10 @@ const Visualizer = (props) => {
       />
       <div id="links-wrapper">
         <Link to={'/drummachine'}>
-          <button>back to the drums</button>
+          <button id="drums-link">back to the drums</button>
         </Link>
         <Link to={'/instructions'}>
-          <button>I need more instruction</button>
+          <button id="instructions-link">I need more instruction</button>
         </Link>
       </div>
       <span id="instructions">(pro tip!) you can play a tune with your keyboard's home row, start/stop your loop with space bar, and mute individual drum tracks with keys 1-5. if you experience performance issues, kill the canvas with the '9' key before you leave the visualizer</span>
