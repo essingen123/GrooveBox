@@ -7,16 +7,26 @@ import sinon from 'sinon';
 
 import App from './App';
 import Instructions from './Instructions';
+import DrumMachine from './DrumMachine';
 
+chai.use(chaiEnzyme())
+chai.use(chaiJsx)
 
 describe('<App/>', ()=> {
-  it('renders without crashing', () => {
+  it('renders an instructions component', () => {
     shallow(<App children={<Instructions />}/>)
   });
-  //check for different child components, instructions, drummachine, visualizer
 
-  //toggleStep function
+  it('renders an drumMachine component', () => {
+    shallow(<App children={<DrumMachine />}/>)
+  });
 
+  it('should have drumracks in state', ()=> {
+    let wrapper = shallow(<App children={<DrumMachine />}/>)
+    chai.expect(wrapper.state('drumRacks').E40).to.eql([false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false]);
+  });
+
+});
   //toggle mute function
 
   //playPause function
@@ -26,10 +36,3 @@ describe('<App/>', ()=> {
   //play loop function
 
   //update tempo function
-})
-
-describe('<DrumMachine/>', ()=>{
-  //stub out state of drum racks
-
-  
-})
