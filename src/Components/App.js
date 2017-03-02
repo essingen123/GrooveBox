@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import howler from 'howler';
+import CryptoJS from 'crypto-js';
+import {browserHistory} from 'react-router'
 
 export default class App extends Component {
   constructor(){
@@ -17,11 +19,13 @@ export default class App extends Component {
         OpenHat: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
       },
       mute: {Kick: false, OpenHat: false, ClosedHat: false, Clap: false, E40: false, Canvas: false},
+      encrypt: {}
     }
   }
 
   componentDidMount() {
     this.playLoop()
+    this.decrypt()
   }
 
   toggleStep(key, index) {
@@ -102,6 +106,30 @@ export default class App extends Component {
     this.setState({canvas: newMute})
   }
 
+  encrypt() {
+    let ciphertext = CryptoJS.AES.encrypt(JSON.stringify(this.state.drumRacks), 'secretkey123');
+    this.setState({encrypt: ciphertext.toString()})
+    browserHistory.push(`/drummachine/${ciphertext.toString()}`)
+  }
+
+  decrypt() {
+    let fullLocation = this.props.location.pathname
+    switch(fullLocation){
+      case '/drummachine':
+        break;
+      case '/visualizer':
+        break;
+      case 'instructions':
+        break;
+      default:
+        let trimmedLocation = fullLocation.replace("/drummachine/", "");
+        let bytes  = CryptoJS.AES.decrypt(trimmedLocation, 'secretkey123');
+        let decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+        this.setState({drumRacks: decryptedData});
+        break;
+    }
+  }
+
   render() {
     const Children = React.cloneElement(this.props.children, {
       toggleStep: this.toggleStep.bind(this),
@@ -109,6 +137,7 @@ export default class App extends Component {
       updateTempo: this.updateTempo.bind(this),
       toggleMute: this.toggleMute.bind(this),
       toggleCanvas: this.toggleCanvas.bind(this),
+      encrypt: this.encrypt.bind(this),
       currentStep: this.state.currentStep,
       drumRacks: this.state.drumRacks,
       tempo: this.state.tempo,

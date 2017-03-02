@@ -7,7 +7,8 @@ const sketch = (p) => {
   let closedRadius = 50;
   let openRadius = 50;
   let bassRadius = 50;
-  let osc, envelope, fft, reverb, delay, midiValue;
+  let midiValue = 0;
+  let osc, envelope, fft, reverb, delay;
 
   p.setup = () => {
     p.createCanvas(1000, .7*(p.displayHeight));

@@ -14,6 +14,7 @@ const router = (
       <IndexRedirect to='/instructions' />
       <Route path='/instructions' component={Instructions}/>
       <Route path='/drummachine' component={DrumMachine}/>
+      <Route path='/drummachine/**' component={DrumMachine}/>
       <Route path='/visualizer' component={Visualizer}/>
     </Route>
   </Router>

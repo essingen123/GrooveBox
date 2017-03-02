@@ -33,6 +33,9 @@ const DrumMachine = (props) => {
             instructions
           </button>
         </Link>
+        <button id='share-button' onClick={()=>props.encrypt()}>
+          share
+        </button>
       </div>
 
       <div id='drum-racks'>
