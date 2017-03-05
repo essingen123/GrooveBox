@@ -20,7 +20,7 @@ const sketch = (p) => {
     envelope.setADSR(0.001, 0.5, 0.1, 0.5);
     envelope.setRange(1, 0);
     reverb.process(osc,2,2,false); //source, seconds, decay, reverse
-    delay.process(osc, .12, .8, 2300); //source, delay, feedback, lowpass
+    delay.process(osc, .12, .4, 2300); //source, delay, feedback, lowpass
     osc.start();
     fft = new p5.FFT();
     p.noStroke();
@@ -46,17 +46,17 @@ const sketch = (p) => {
     }
 
     p.fill('rgba(255,43,56, 0.8)');
-    p.ellipse(166, p.height/2, kickRadius);
+    p.ellipse(166, p.height/2, bassRadius);
     p.fill('rgba(255,43,56, 0.8)');
-    p.ellipse(332, p.height/2, clapRadius);
+    p.ellipse(332, p.height/2, kickRadius);
+    p.fill('rgba(255,43,56, 0.8m s)');
+    p.ellipse(500, p.height/2, clapRadius);
     p.fill('rgba(255,43,56, 0.8)');
-    p.ellipse(500, p.height/2, closedRadius);
-    p.fill('rgba(255,43,56, 0.8)');
-    p.ellipse(666, p.height/2, bassRadius);
+    p.ellipse(666, p.height/2, closedRadius);
     p.fill('rgba(255,43,56, 0.8)');
     p.ellipse(830, p.height/2, openRadius);
 
-    //map homerow to midi values
+    //map homerow to midi values ... left hand is the stranger things arpeggio
     if (p.keyIsDown(65)) {midiValue = 60} //a
     else midiValue = 0;
     if (p.keyIsDown(83)) {midiValue = 64} //s
@@ -69,6 +69,14 @@ const sketch = (p) => {
     if (p.keyIsDown(76)) {midiValue = 81} //l
     if (p.keyIsDown(186)) {midiValue = 83} //;
     if (p.keyIsDown(222)) {midiValue = 84} //'
+
+    //Game of thrones melody first bar, right hand lower row
+    if (p.keyIsDown(66)) {midiValue = 55} //B
+    if (p.keyIsDown(78)) {midiValue = 60} //N
+    if (p.keyIsDown(77)) {midiValue = 62} //M
+    if (p.keyIsDown(188)) {midiValue = 63} //,
+    if (p.keyIsDown(190)) {midiValue = 65} //.
+    if (p.keyIsDown(191)) {midiValue = 67} ///
 
     let freqValue = p.midiToFreq(midiValue);
     osc.freq(freqValue);
