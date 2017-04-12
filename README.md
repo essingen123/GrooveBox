@@ -1,16 +1,11 @@
 ## Vapor Grooves
 
-a drum sequencer and visualizer built with react-router, p5js, and a little bit of nostalgia.
+deployed to [heroku](http://vapor-grooves-v1.herokuapp.com/)
+a drum sequencer and visualizer built with react-router, p5js, and a little bit of nostalgia. if you're not a fan of the color scheme, you probably weren't a fan of Cam'ron and The Diplomats circa 2003/4.
 
 ## Project Status
 
-We have a functioning 16-step sequencer, accompanying visualizer, and a hidden synthesizer in the sequencer that the user can play with the home row on the keyboard. Need to track down memory leak that i suspect has something to do with reat-router and the canvas.
-
-## Project Screen Shot(s)
-
-![Splash Page](http://imgur.com/tJoZoEe "splash page")
-![Visualizer](http://imgur.com/brsw7Ld "Visualizer")
-![Drum Machine](http://imgur.com/QooJWBE "splash page")
+We have a functioning 16-step sequencer, accompanying visualizer, and a hidden synthesizer in the sequencer that the user can play with the home row on the keyboard. Need to track down memory leak that i suspect has something to do with reat-router and the canvas. The visualizer is definitely MVP, with the time alotted for the project I just wanted something rendering on screen based on the audio triggers. 
 
 ## Installation and Setup Instructions
 
