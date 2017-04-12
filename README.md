@@ -33,4 +33,4 @@ This was a 2 week project built during my third module at Turing School of Softw
 
 I've been struggling to figure out a memory leak issue that happens when we route away from the canvas and then back to it.
 
-I plan on rebuilding without react or router to improve performance of the canvas.
+I plan on rebuilding the visualizer without react or router to improve performance of the canvas.
